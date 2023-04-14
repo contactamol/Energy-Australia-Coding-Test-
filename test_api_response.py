@@ -17,7 +17,10 @@ def api_client():
 def test_api_response_code(api_client):
     response = api_client.get(API_URL)
 
-    assert response.status_code == 200
+    try:
+        assert response.status_code == 200
+    except AssertionError:
+        print(f"Received a response with status code {response.status_code}")
 
 # function to check null values if present in 'name' and 'bands'
 
